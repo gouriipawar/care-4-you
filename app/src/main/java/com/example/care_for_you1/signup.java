@@ -1,6 +1,7 @@
 package com.example.care_for_you1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -69,16 +70,19 @@ public class signup extends Activity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful())
                                     {
-                                        Toast.makeText(signup.this, "Email Verification Done", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signup.this, "Email Verification Link Sent", Toast.LENGTH_SHORT).show();
                                         if(firebaseAuth.getCurrentUser().isEmailVerified())
                                         {
                                             Toast.makeText(signup.this,"verified email",Toast.LENGTH_LONG).show();
                                         }
                                         else
                                         {
-                                            Toast.makeText(signup.this,"wrong email provided",Toast.LENGTH_LONG).show();
+
                                             firebaseAuth.getCurrentUser().delete();
                                         }
+                                        Intent intent = new Intent(signup.this, signin.class);
+                                        startActivity(intent);
+
                                     }
                                     else {
                                         Toast.makeText(signup.this, "Failed Email Verification", Toast.LENGTH_SHORT).show();

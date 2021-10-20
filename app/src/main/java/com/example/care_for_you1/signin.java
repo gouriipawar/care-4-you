@@ -36,6 +36,16 @@ public class signin extends AppCompatActivity {
                 if(!email.isEmpty() && !pass.isEmpty())
                 {
                     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+                   // if(firebaseAuth.getCurrentUser().isEmailVerified())
+                    //{
+                     //   Toast.makeText(signin.this,"verified email",Toast.LENGTH_LONG).show();
+                    //}
+                    //else
+                    //{
+                      //  Toast.makeText(signin.this,"wrong email provided",Toast.LENGTH_LONG).show();
+                        //firebaseAuth.getCurrentUser().delete();
+                    //}
                     firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
