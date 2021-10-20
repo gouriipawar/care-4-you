@@ -28,6 +28,7 @@ public class signin extends AppCompatActivity {
         b1 = findViewById(R.id.b1);
         e1 = findViewById(R.id.e1);
         e2 = findViewById(R.id.e2);
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,26 +38,28 @@ public class signin extends AppCompatActivity {
                 {
                     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-                   // if(firebaseAuth.getCurrentUser().isEmailVerified())
-                    //{
-                     //   Toast.makeText(signin.this,"verified email",Toast.LENGTH_LONG).show();
-                    //}
-                    //else
-                    //{
-                      //  Toast.makeText(signin.this,"wrong email provided",Toast.LENGTH_LONG).show();
-                        //firebaseAuth.getCurrentUser().delete();
-                    //}
+
                     firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())
                             {
-                                Toast.makeText(signin.this,"logged in with unregistered email",Toast.LENGTH_LONG).show();
+                                if(firebaseAuth.getCurrentUser().isEmailVerified())
+                                {
+                                    Toast.makeText(signin.this,"verified email",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(signin.this,"logged in with successfully",Toast.LENGTH_LONG).show();
+
+                                }
+                                else
+                                {
+                                    Toast.makeText(signin.this,"Email Verification Required",Toast.LENGTH_LONG).show();
+                                    //firebaseAuth.getCurrentUser().delete();
+                                }
 
                             }
                             else
                             {
-                                Toast.makeText(signin.this,"failed to login with unregistered one ",Toast.LENGTH_LONG).show();
+                                Toast.makeText(signin.this,"login failed ",Toast.LENGTH_LONG).show();
                             }
                         }
                     });

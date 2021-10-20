@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -50,8 +51,19 @@ public class signup extends Activity {
         password = e2.getText().toString();
 
         b1 = findViewById(R.id.b1);
-
-
+        ActionCodeSettings actionCodeSettings =
+                ActionCodeSettings.newBuilder()
+                        // URL you want to redirect back to. The domain (www.example.com) for this
+                        // URL must be whitelisted in the Firebase Console.
+                        .setUrl("https://www.example.com/finishSignUp?cartId=1234")
+                        // This must be true
+                        .setHandleCodeInApp(true)
+                        .setIOSBundleId("com.example.ios")
+                        .setAndroidPackageName(
+                                "com.example.android",
+                                true, /* installIfNotAvailable */
+                                "12"    /* minimumVersion */)
+                        .build();
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +77,7 @@ public class signup extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            firebaseAuth.getCurrentUser().sendEmailVerification(actionCodeSettings).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful())

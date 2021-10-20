@@ -1,53 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_gravity="center"
-    android:gravity="center"
+    android:background="@drawable/signupbackground"
+    android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".signup">
 
-    <TextView
-        android:id="@+id/t"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Care-for-you" />
-
-    <TextView
-        android:id = "@+id/t1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text = "email"/>
 
     <EditText
-        android:id= "@+id/e1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:hint="Email"/>
-    <TextView
-        android:id = "@+id/t2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text = "password"/>
+        android:id="@+id/e1"
+        android:layout_width="182dp"
+        android:layout_height="54dp"
+        android:hint="Email"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
 
     <EditText
-        android:id= "@+id/e2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:hint="password"
-        android:inputType="textPassword"/>
-
+        android:id="@+id/e2"
+        android:layout_width="182dp"
+        android:layout_height="46dp"
+        android:fontFamily="sans-serif"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485" />
 
     <Button
-        android:id = "@+id/b1"
+        android:id="@+id/b1"
+        android:layout_width="95dp"
+        android:layout_height="55dp"
+        android:text="signup"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.589" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="151dp"
+        android:layout_height="57dp"
+        android:src="@drawable/c4u"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "signup"
-        />
+        android:src="@drawable/logo1"
+        tools:layout_editor_absoluteY="5dp" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="220dp"
+        android:layout_height="72dp"
+        android:background="#002A3C0E"
+        android:fontFamily="@font/anton"
+        android:text="Registration"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
